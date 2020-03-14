@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "Bullet",
 "language": "GDScript",
 "path": "res://entities/bullet/bullet.gd"
+}, {
+"base": "Node",
+"class": "Powerup",
+"language": "GDScript",
+"path": "res://entities/Powerup.gd"
 } ]
 _global_script_class_icons={
-"Bullet": ""
+"Bullet": "",
+"Powerup": ""
 }
 
 [application]
