@@ -2,7 +2,6 @@ extends Control
 
 
 export var life_scene : PackedScene
-onready var label = $Label
 const OFFSET = 30
 
 func initialize(lives):
