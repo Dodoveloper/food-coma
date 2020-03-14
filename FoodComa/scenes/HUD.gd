@@ -7,14 +7,11 @@ onready var label = $Label
 
 func set_lives(value):
 	lives = value
-	if is_inside_tree():
-		yield(self, "ready")
 	label.text = str(lives)
 
 func _ready():
 	label.text = str(lives)
-	
-	
-func update_lives(hitpoints):
-	self.lives -= hitpoints
+
+func update_lives(_lives):
+	self.lives -= _lives
 	

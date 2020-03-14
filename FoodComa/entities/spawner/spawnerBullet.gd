@@ -5,7 +5,6 @@ export (PackedScene) var Bullet
 var deltaTime : float = 0.0
 var spawnerTimer : float = 1000
 var velocityBullet : int = 200
-var delta : float
 var pattern : float
 var counter = 0
 

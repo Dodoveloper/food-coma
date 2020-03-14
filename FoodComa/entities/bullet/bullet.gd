@@ -1,8 +1,10 @@
-extends KinematicBody2D
+extends Area2D
 class_name Bullet
 
 var velocity : float
 var direction : float
+
+var hitpoints : int = 1
 
 func setVelocity(Velocity : float):
 	velocity = Velocity
@@ -12,8 +14,13 @@ func setDirection(Direction : float):
 
 func setPosition(Pos : Vector2):
 	position = Pos
-	
+
 func _physics_process(delta):
 	var movement : Vector2
 	movement = polar2cartesian(velocity,direction)
-	move_and_collide(movement * delta)
+	position += movement * delta
+
+func destroy():
+	set_deferred("monitoring", false)
+	set_deferred("monitorable", false)
+	queue_free()
