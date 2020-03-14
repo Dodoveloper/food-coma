@@ -7,7 +7,7 @@ var direction : float
 func setVelocity(Velocity : float):
 	velocity = Velocity
 
-func setDireciton(Direction : float):
+func setDirection(Direction : float):
 	direction = Direction
 
 func setPosition(Pos : Vector2):
@@ -16,4 +16,4 @@ func setPosition(Pos : Vector2):
 func _physics_process(delta):
 	var movement : Vector2
 	movement = polar2cartesian(velocity,direction)
-	move_and_collide(movement)
+	move_and_collide(movement * delta)

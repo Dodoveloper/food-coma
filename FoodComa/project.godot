@@ -21,6 +21,7 @@ _global_script_class_icons={
 [application]
 
 config/name="FoodComa"
+run/main_scene="res://scenes/world.tscn"
 config/icon="res://icon.png"
 
 [display]
