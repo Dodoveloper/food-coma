@@ -13,10 +13,9 @@ script = ExtResource( 5 )
 position = Vector2( 608.207, 634.763 )
 
 [node name="Boss" parent="." instance=ExtResource( 2 )]
-position = Vector2( 618.481, 192.966 )
+position = Vector2( 608.207, 343.657 )
 
 [node name="spawnerBullet" parent="Boss" instance=ExtResource( 3 )]
-position = Vector2( -154.62, -48.2415 )
 scale = Vector2( 0.25, 0.25 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
