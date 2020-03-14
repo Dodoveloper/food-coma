@@ -12,9 +12,11 @@ script = ExtResource( 5 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 608.207, 634.763 )
+lives = 4
 
 [node name="Boss" parent="." instance=ExtResource( 2 )]
 position = Vector2( 618.481, 256.966 )
+life = 4
 
 [node name="spawnerBullet" parent="Boss" instance=ExtResource( 3 )]
 position = Vector2( -154.62, -48.2415 )
