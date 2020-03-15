@@ -1,0 +1,37 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://entities/enemy/HitPointContainer.gd" type="Script" id=1]
+[ext_resource path="res://entities/enemy/Hitpoint.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/MonsterFriendFore.otf" type="DynamicFontData" id=3]
+[ext_resource path="res://scenes/BossLifeBar.gd" type="Script" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 12
+font_data = ExtResource( 3 )
+
+[node name="LifeBar" type="Node2D"]
+position = Vector2( -78, -60 )
+script = ExtResource( 4 )
+
+[node name="Control" type="HBoxContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 12.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BossName" type="Label" parent="Control"]
+margin_right = 111.0
+margin_bottom = 13.0
+custom_fonts/font = SubResource( 1 )
+text = "CARBONARA"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HitPointContainer" type="HBoxContainer" parent="Control"]
+margin_left = 115.0
+margin_right = 115.0
+margin_bottom = 13.0
+script = ExtResource( 1 )
+hitpoint_scene = ExtResource( 2 )
