@@ -11,6 +11,14 @@ func initialize(life_point):
 		add_child(hitpoint)
 	
 func update_life(points):
+	var k:int
+	var N:Node
+	
 	life -= points
+	k = get_child_count() - 1
 	for i in points:
-		remove_child(get_child(get_child_count()-1))
+		if (k >= 0):
+			N = get_child(k)
+			if null != N:
+				remove_child(N)
+			k -= 1
