@@ -1,15 +1,11 @@
 extends Node2D
 
-export var enemy_name: String
-export var life_points: int = 100
-
 onready var label = $Control/BossName
 onready var container = $Control/HitPointContainer
 
-
-func _ready():
+func initialize(enemy_name, life):
 	label.text = enemy_name
-	container.initialize(life_points)
+	container.initialize(life)
 
 func hurt(quantity):
 	container.update_life(quantity)

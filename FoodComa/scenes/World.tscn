@@ -22,7 +22,7 @@ position = Vector2( 608.207, 634.763 )
 
 [node name="Boss" parent="." instance=ExtResource( 5 )]
 position = Vector2( 618.481, 256.966 )
-life = 4
+enemy_name = "CARBONARA"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -41,7 +41,6 @@ life_scene = ExtResource( 4 )
 
 [node name="LifeBar" parent="CanvasLayer" instance=ExtResource( 7 )]
 position = Vector2( 459.509, 11.7691 )
-enemy_name = "CARBONARA"
 [connection signal="fattened" from="Player" to="." method="_on_Player_fattened"]
 [connection signal="hurt" from="Player" to="." method="_on_Player_hurt"]
 [connection signal="got_hit" from="Boss" to="." method="_on_Boss_got_hit"]

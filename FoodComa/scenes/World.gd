@@ -3,9 +3,11 @@ extends Node2D
 onready var boss_hud = $CanvasLayer/LifeBar
 onready var player_hud = $CanvasLayer/Brioschis
 onready var player = $Player
+onready var boss = $Boss
 
 func _ready():
 	player_hud.initialize(player.lives)
+	boss_hud.initialize(boss.enemy_name, boss.life)
 	
 func _on_Player_hurt(hitpoints):
 	player_hud.update_lives(hitpoints)
