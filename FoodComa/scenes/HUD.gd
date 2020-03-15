@@ -11,5 +11,4 @@ func initialize(lives):
 		life.position.x = OFFSET*i
 
 func update_lives(_lives):
-	remove_child(get_child(get_child_count()-1))
-	
+	remove_child(get_child(get_child_count() - 1))

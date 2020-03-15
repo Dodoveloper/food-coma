@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=78 format=2]
 
 [ext_resource path="res://entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/character/thin/idle_thin_02.png" type="Texture" id=2]
@@ -56,17 +56,30 @@
 [ext_resource path="res://assets/character/overweight/run_overweight_03.png" type="Texture" id=54]
 [ext_resource path="res://assets/character/overweight/idle_throwing_antiacid_overweight_01.png" type="Texture" id=55]
 [ext_resource path="res://entities/bullet/PlayerBullet.tscn" type="PackedScene" id=56]
+[ext_resource path="res://assets/character/obese/idle_obese_throwing_antiacid_02.png" type="Texture" id=57]
+[ext_resource path="res://assets/character/obese/run_obese_01.png" type="Texture" id=58]
+[ext_resource path="res://assets/character/obese/run_obese_02.png" type="Texture" id=59]
+[ext_resource path="res://assets/character/obese/idle_obese_throwing_antiacid_04.png" type="Texture" id=60]
+[ext_resource path="res://assets/character/obese/idle_obese_02.png" type="Texture" id=61]
+[ext_resource path="res://assets/character/obese/run_obese_throwing_antiacid_03.png" type="Texture" id=62]
+[ext_resource path="res://assets/character/obese/run_obese_throwing_antiacid_01.png" type="Texture" id=63]
+[ext_resource path="res://assets/character/obese/idle_obese_throwing_antiacid_03.png" type="Texture" id=64]
+[ext_resource path="res://assets/character/obese/run_obese_04.png" type="Texture" id=65]
+[ext_resource path="res://assets/character/obese/idle_obese_throwing_antiacid_01.png" type="Texture" id=66]
+[ext_resource path="res://assets/character/obese/idle_obese_03.png" type="Texture" id=67]
+[ext_resource path="res://assets/character/obese/run_obese_06.png" type="Texture" id=68]
+[ext_resource path="res://assets/character/obese/run_obese_05.png" type="Texture" id=69]
+[ext_resource path="res://assets/character/obese/idle_obese_04.png" type="Texture" id=70]
+[ext_resource path="res://assets/character/obese/run_obese_throwing_antiacid_02.png" type="Texture" id=71]
+[ext_resource path="res://assets/character/obese/run_obese_03.png" type="Texture" id=72]
+[ext_resource path="res://assets/character/obese/run_obese_throwing_antiacid_04.png" type="Texture" id=73]
+[ext_resource path="res://assets/character/obese/idle_obese_01.png" type="Texture" id=74]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
 "frames": [ ExtResource( 40 ), ExtResource( 41 ), ExtResource( 38 ), ExtResource( 39 ) ],
 "loop": true,
 "name": "idle_overweight",
-"speed": 4.0
-}, {
-"frames": [ ExtResource( 49 ), ExtResource( 42 ), ExtResource( 51 ), ExtResource( 44 ) ],
-"loop": true,
-"name": "run_throwing_antiacid_overweight",
 "speed": 4.0
 }, {
 "frames": [ ExtResource( 23 ), ExtResource( 22 ), ExtResource( 26 ), ExtResource( 32 ) ],
@@ -114,17 +127,42 @@ animations = [ {
 "name": "run_thin",
 "speed": 6.0
 }, {
+"frames": [ ExtResource( 49 ), ExtResource( 42 ), ExtResource( 51 ), ExtResource( 44 ) ],
+"loop": true,
+"name": "run_throw_antiacid_overweight",
+"speed": 4.0
+}, {
 "frames": [ ExtResource( 55 ), ExtResource( 45 ), ExtResource( 43 ), ExtResource( 48 ) ],
 "loop": true,
-"name": "idle_throwing_antiacid_overweight",
+"name": "idle_throw_antiacid_overweight",
 "speed": 4.0
+}, {
+"frames": [ ExtResource( 66 ), ExtResource( 57 ), ExtResource( 64 ), ExtResource( 60 ) ],
+"loop": true,
+"name": "idle_throw_antiacid_obese",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 63 ), ExtResource( 71 ), ExtResource( 62 ), ExtResource( 73 ) ],
+"loop": true,
+"name": "run_throw_antiacid_obese",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 58 ), ExtResource( 59 ), ExtResource( 72 ), ExtResource( 65 ), ExtResource( 69 ), ExtResource( 68 ) ],
+"loop": true,
+"name": "run_obese",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 74 ), ExtResource( 61 ), ExtResource( 67 ), ExtResource( 70 ) ],
+"loop": true,
+"name": "idle_obese",
+"speed": 5.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=2]
 height = 56.8487
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 11.8448, 32 )
+extents = Vector2( 10.6, 32 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 6
@@ -132,10 +170,10 @@ script = ExtResource( 1 )
 Bullet = ExtResource( 56 )
 
 [node name="AnimSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 0, -2 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
-animation = "run_throwing_antiacid_overweight"
-frame = 1
+animation = "idle_thin"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 z_index = -10
@@ -146,9 +184,12 @@ collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-z_index = -10
 shape = SubResource( 3 )
 
 [node name="ShootingPos" type="Position2D" parent="."]
 position = Vector2( 0, -39.7214 )
+
+[node name="FireRate" type="Timer" parent="."]
+wait_time = 0.5
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
+[connection signal="timeout" from="FireRate" to="." method="_on_FireRate_timeout"]

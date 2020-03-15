@@ -1,4 +1,5 @@
 extends Area2D
+class_name EnemyBullet
 
 const HEXTANT_SIZE : float = 0.39269908169872415480783042290994
 var velocity : float
@@ -19,7 +20,7 @@ func _physics_process(delta):
 	var hextant : int
 	var rotdeg : float
 	var diagonal : bool
-	
+
 	# Obtain a value 0..15 determining which hextant the bullet flies into
 	hextant = (floor(direction / HEXTANT_SIZE) as int) % 16
 	assert((hextant >= 0) and (hextant <= 15))

@@ -8,3 +8,6 @@ func _ready():
 	
 func _on_Player_hurt(hitpoints):
 	hud.update_lives(hitpoints)
+
+func _on_Player_fattened(lives):
+	hud.initialize(lives)

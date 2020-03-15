@@ -1,4 +1,5 @@
 extends Area2D
+class_name PlayerBullet
 
 export var speed : int
 export var damage : int

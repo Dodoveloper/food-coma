@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 signal hurt
+signal fattened
 signal collect
 
 export var speed : int = 500
@@ -8,16 +9,20 @@ export var lives : int = 3
 export var accuracy : float = 0.1
 export var Bullet : PackedScene
 
+var max_lives : int
+
 var direction : Vector2 = Vector2()
 var velocity : Vector2 = Vector2()
 
 var cur_state : String = "idle"
-var body_shapes = ["thin", "medium", "overweight"]
+var body_shapes = ["thin", "medium", "overweight", "obese"]
+var collision_sizes = [10.6, 12.8, 15.0, 18.1]
 var cur_shape : int = 0
 var is_shooting : bool = false
 
 func _ready():
 	set_animation(cur_state, is_shooting, body_shapes[cur_shape])
+	max_lives = lives
 
 func _physics_process(_delta):
 	direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -27,11 +32,9 @@ func _physics_process(_delta):
 	velocity = move_and_slide(velocity)
 
 	# animation
-	$AnimSprite.flip_h = false if get_global_mouse_position().x - global_position.x >= 0 \
-			else true
 	cur_state = "run" if direction.length() > 0 else "idle"
-	if Input.is_action_just_released("ui_click"):
-		shoot(get_global_mouse_position())
+	if Input.is_action_just_released("ui_select") and not is_shooting:
+		shoot($ShootingPos.global_position)
 	set_animation(cur_state, is_shooting, body_shapes[cur_shape])
 
 func set_animation(state : String, shooting : bool, body_shape : String):
@@ -39,29 +42,32 @@ func set_animation(state : String, shooting : bool, body_shape : String):
 	$AnimSprite.play(new_anim)
 
 func get_fatter():
-	# to be changed
-	cur_shape += 1 if cur_shape >= body_shapes.size() else 0
+	cur_shape += 1 if cur_shape < body_shapes.size() - 1 else 0
 	if cur_shape >= body_shapes.size():
 		# game over
-		pass
+		return
+	lives = max_lives
+	$Area2D/CollisionShape2D.shape.extents.x = collision_sizes[cur_shape]
+	emit_signal("fattened", lives)
 
-func shoot(target_pos : Vector2):
+func shoot(start_pos : Vector2):
 	is_shooting = true
-	var bullet_dir = (target_pos - $ShootingPos.global_position).normalized()
+	var bullet_dir = Vector2.UP.normalized()
 	var b = Bullet.instance()
 	get_parent().add_child(b)
 	var rand = rand_range(-accuracy / 6, accuracy / 6)
-	b.start($ShootingPos.global_position, bullet_dir, rand)
-	yield(get_tree().create_timer(0.4), "timeout")
-	is_shooting = false
+	b.start(start_pos, bullet_dir, rand)
+	$FireRate.start()
 
 func _on_Area2D_area_entered(area):
-	if "EnemyBullet" in area.name:
-		if lives > 0:
-			lives -= area.hitpoints
-		else:
+	if area is EnemyBullet:
+		lives -= area.hitpoints
+		emit_signal("hurt", lives)
+		if not lives > 0:
 			get_fatter()
 		area.destroy()
-		emit_signal("hurt", lives)
 	if area is Powerup:
 		emit_signal("collect", area)
+
+func _on_FireRate_timeout():
+	is_shooting = false
