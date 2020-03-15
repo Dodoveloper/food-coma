@@ -2,6 +2,7 @@ extends KinematicBody2D
 
 signal hurt
 signal fattened
+signal dead
 signal collect
 
 export var speed : int = 500
@@ -44,7 +45,7 @@ func set_animation(state : String, shooting : bool, body_shape : String):
 func get_fatter():
 	cur_shape += 1 if cur_shape < body_shapes.size() - 1 else 0
 	if cur_shape >= body_shapes.size():
-		# game over
+		emit_signal("dead")
 		return
 	lives = max_lives
 	$Area2D/CollisionShape2D.shape.extents.x = collision_sizes[cur_shape]
