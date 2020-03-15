@@ -190,6 +190,6 @@ shape = SubResource( 3 )
 position = Vector2( 0, -39.7214 )
 
 [node name="FireRate" type="Timer" parent="."]
-wait_time = 0.5
+wait_time = 0.1
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="timeout" from="FireRate" to="." method="_on_FireRate_timeout"]
