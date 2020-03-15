@@ -1,12 +1,13 @@
 extends KinematicBody2D
 
-export var life : int = 5
-onready var hitpoints_container = $LifeBar/Control/HitPointContainer
+export var enemy_name: String
+export var life_points: int = 100
 
-func _ready():
-	hitpoints_container.initialize(life)
-	
-func hurt(hitpoints):
-	life -= hitpoints
-	hitpoints_container.update_life(hitpoints)
+onready var life = life_points
+
+signal got_hit
+
+func hurt(quantity):
+	life -= quantity
+	emit_signal("got_hit", quantity)
 	

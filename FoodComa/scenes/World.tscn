@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/World.gd" type="Script" id=1]
 [ext_resource path="res://scenes/HUD.gd" type="Script" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://scenes/Life.tscn" type="PackedScene" id=4]
 [ext_resource path="res://entities/enemy/Boss.tscn" type="PackedScene" id=5]
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/BossLifeBar.tscn" type="PackedScene" id=7]
 
 [node name="World" type="Node2D"]
 script = ExtResource( 1 )
@@ -21,7 +22,7 @@ position = Vector2( 608.207, 634.763 )
 
 [node name="Boss" parent="." instance=ExtResource( 5 )]
 position = Vector2( 618.481, 256.966 )
-life = 4
+enemy_name = "CARBONARA"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -30,12 +31,16 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -111.0
-margin_top = -40.0
+margin_left = -159.0
+margin_top = -72.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 life_scene = ExtResource( 4 )
+
+[node name="LifeBar" parent="CanvasLayer" instance=ExtResource( 7 )]
+position = Vector2( 459.509, 11.7691 )
 [connection signal="fattened" from="Player" to="." method="_on_Player_fattened"]
 [connection signal="hurt" from="Player" to="." method="_on_Player_hurt"]
+[connection signal="got_hit" from="Boss" to="." method="_on_Boss_got_hit"]
