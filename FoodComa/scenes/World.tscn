@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://scenes/World.gd" type="Script" id=1]
 [ext_resource path="res://scenes/HUD.gd" type="Script" id=2]
-[ext_resource path="res://entities/spawner/spawnerBullet.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/Life.tscn" type="PackedScene" id=4]
 [ext_resource path="res://entities/enemy/Boss.tscn" type="PackedScene" id=5]
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=6]
@@ -17,10 +16,6 @@ lives = 4
 [node name="Boss" parent="." instance=ExtResource( 5 )]
 position = Vector2( 618.481, 256.966 )
 life = 4
-
-[node name="spawnerBullet" parent="Boss" instance=ExtResource( 3 )]
-position = Vector2( -154.62, -48.2415 )
-scale = Vector2( 0.25, 0.25 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 

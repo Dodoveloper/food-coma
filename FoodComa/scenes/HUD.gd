@@ -9,7 +9,6 @@ func initialize(lives):
 		var life = life_scene.instance()
 		add_child(life)
 		life.position.x = OFFSET*i
-	
 
 func update_lives(_lives):
 	remove_child(get_child(get_child_count()-1))

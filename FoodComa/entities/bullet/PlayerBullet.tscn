@@ -1,0 +1,26 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/digestives/Antiacid_01.png" type="Texture" id=2]
+[ext_resource path="res://entities/bullet/PlayerBullet.gd" type="Script" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 4.36878
+height = 3.83459
+
+[node name="PlayerBullet" type="Area2D"]
+collision_layer = 8
+collision_mask = 10
+script = ExtResource( 3 )
+speed = 400
+damage = 2
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Collider" type="CollisionShape2D" parent="."]
+z_index = -10
+shape = SubResource( 1 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+scale = Vector2( 1.58888, 1.58888 )
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
