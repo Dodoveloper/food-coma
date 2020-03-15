@@ -20,10 +20,12 @@ var body_shapes = ["thin", "medium", "overweight", "obese"]
 var collision_sizes = [10.6, 12.8, 15.0, 18.1]
 var cur_shape : int = 0
 var is_shooting : bool = false
+var screen : Rect2
 
 func _ready():
 	set_animation(cur_state, is_shooting, body_shapes[cur_shape])
 	max_lives = lives
+	screen = get_viewport_rect()
 
 func _physics_process(_delta):
 	direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -31,6 +33,8 @@ func _physics_process(_delta):
 	
 	velocity = direction.normalized() * speed
 	velocity = move_and_slide(velocity)
+	self.position.x = clamp(self.position.x, screen.position.x, screen.end.x)
+	self.position.y = clamp(self.position.y, screen.position.y, screen.end.y)
 
 	# animation
 	cur_state = "run" if direction.length() > 0 else "idle"
@@ -48,7 +52,7 @@ func get_fatter():
 		emit_signal("dead")
 		return
 	lives = max_lives
-	$Area2D/CollisionShape2D.shape.extents.x = collision_sizes[cur_shape]
+#	$Area2D/CollisionShape2D.shape.extents.x = collision_sizes[cur_shape]
 	emit_signal("fattened", lives)
 
 func shoot(start_pos : Vector2):
