@@ -12,3 +12,7 @@ func _on_Player_hurt(hitpoints):
 
 func _on_Player_fattened(lives):
 	player_hud.initialize(lives)
+
+
+func _on_Boss_got_hit(quantity):
+	boss_hud.hurt(quantity)

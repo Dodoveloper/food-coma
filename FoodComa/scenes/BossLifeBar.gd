@@ -10,3 +10,6 @@ onready var container = $Control/HitPointContainer
 func _ready():
 	label.text = enemy_name
 	container.initialize(life_points)
+
+func hurt(quantity):
+	container.update_life(quantity)

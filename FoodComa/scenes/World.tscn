@@ -31,8 +31,8 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -111.0
-margin_top = -40.0
+margin_left = -159.0
+margin_top = -72.0
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -40,5 +40,8 @@ __meta__ = {
 life_scene = ExtResource( 4 )
 
 [node name="LifeBar" parent="CanvasLayer" instance=ExtResource( 7 )]
+position = Vector2( 459.509, 11.7691 )
+enemy_name = "CARBONARA"
 [connection signal="fattened" from="Player" to="." method="_on_Player_fattened"]
 [connection signal="hurt" from="Player" to="." method="_on_Player_hurt"]
+[connection signal="got_hit" from="Boss" to="." method="_on_Boss_got_hit"]

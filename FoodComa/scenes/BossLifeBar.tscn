@@ -6,11 +6,10 @@
 [ext_resource path="res://scenes/BossLifeBar.gd" type="Script" id=4]
 
 [sub_resource type="DynamicFont" id=1]
-size = 12
+size = 32
 font_data = ExtResource( 3 )
 
 [node name="LifeBar" type="Node2D"]
-position = Vector2( -78, -60 )
 script = ExtResource( 4 )
 
 [node name="Control" type="HBoxContainer" parent="."]
@@ -21,17 +20,18 @@ __meta__ = {
 }
 
 [node name="BossName" type="Label" parent="Control"]
-margin_right = 111.0
-margin_bottom = 13.0
+margin_right = 297.0
+margin_bottom = 33.0
 custom_fonts/font = SubResource( 1 )
 text = "CARBONARA"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HitPointContainer" type="HBoxContainer" parent="Control"]
-margin_left = 115.0
-margin_right = 115.0
-margin_bottom = 13.0
+[node name="HitPointContainer" type="GridContainer" parent="Control"]
+margin_left = 301.0
+margin_right = 301.0
+margin_bottom = 33.0
+columns = 20
 script = ExtResource( 1 )
 hitpoint_scene = ExtResource( 2 )

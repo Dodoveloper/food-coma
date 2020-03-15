@@ -27,11 +27,10 @@ height = 48.8302
 scale = Vector2( 4, 4 )
 collision_layer = 2
 script = ExtResource( 1 )
-life = null
 
 [node name="animator" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-frame = 2
+frame = 4
 playing = true
 offset = Vector2( -0.901384, -16.5719 )
 

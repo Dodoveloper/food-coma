@@ -70,6 +70,7 @@ damage = 2
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 8 )
 animation = "running"
+frame = 1
 playing = true
 
 [node name="Collider" type="CollisionShape2D" parent="."]
