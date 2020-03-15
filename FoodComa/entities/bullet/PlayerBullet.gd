@@ -23,3 +23,9 @@ func explode():
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()
+
+
+func _on_PlayerBullet_body_entered(body):
+	if body.is_in_group("boss"):
+		body.hurt(1)
+		queue_free()
