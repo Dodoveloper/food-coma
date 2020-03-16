@@ -36,29 +36,25 @@ func initspawner(root:Node, player:Node, bullet_scale:float):
 	BulletScale = bullet_scale
 	return
 
-func SpawnPatternsA(delta:float):
-	pass
+func _SpawnPatternsA(delta:float) -> Array:
+	return [Vector2(delta, 0.0)]
 
-func SpawnPatternsB(delta:float):
-	pass
+func _SpawnPatternsB(delta:float) -> Array:
+	return [Vector2(delta, 0.0)]
 
-func SpawnPatternsC(delta:float):
-	pass
+func _SpawnPatternsC(delta:float) -> Array:
+	return [Vector2(delta, 0.0)]
 
-func SpawnPatternsD(delta:float):
-	pass
+func _SpawnPatternsD(delta:float) -> Array:
+	return [Vector2(delta, 0.0)]
 
-func SpawnPatternsE(delta:float):
-	pass
+func _SpawnPatternsE(delta:float) -> Array:
+	return [Vector2(delta, 0.0)]
 
 func SpawnBullets(bullets:Array):
 	var bullet:Node
-	var Parent:Node
-	var Root:Node
 	var params:Vector2
 	
-	if (null == Parent):
-		return
 	for i in range(bullets.size()):
 		params = bullets[i]
 		bullet = Bullet.instance()
@@ -69,18 +65,21 @@ func SpawnBullets(bullets:Array):
 		RootNode.add_child(bullet)
 
 func _process(delta:float):
-	var N:Node
 	var currlife:int
+	var bullets:Array
+	var state:int
 	
 	currlife = ParentNode.life
 	if (currlife < 1):
 		return
-	match (currlife * 5) / MaxLife:
-		0: SpawnPatternsA(delta)
-		1: SpawnPatternsB(delta)
-		2: SpawnPatternsC(delta)
-		3: SpawnPatternsD(delta)
-		_: SpawnPatternsE(delta)
+	state = floor((currlife as float * 5) / MaxLife as float) as int
+	match state:
+		0: bullets = _SpawnPatternsE(delta)
+		1: bullets = _SpawnPatternsD(delta)
+		2: bullets = _SpawnPatternsC(delta)
+		3: bullets = _SpawnPatternsB(delta)
+		_: bullets = _SpawnPatternsA(delta)
+	SpawnBullets(bullets)
 	return
 
 

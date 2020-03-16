@@ -11,6 +11,8 @@ func setVelocity(Velocity : float):
 
 func setDirection(Direction : float):
 	direction = Direction
+	while direction < 0.0:
+		direction += 2*PI
 
 func setPosition(Pos : Vector2):
 	position = Pos

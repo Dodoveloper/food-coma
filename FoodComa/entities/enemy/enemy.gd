@@ -7,6 +7,11 @@ export var life_points: int = 100
 
 onready var life = life_points
 
+
+func initboss(root:Node, player:Node):
+	$CarbonaraSpawner.initspawner(root, player, 4.0)
+	return
+
 func hurt(quantity):
 	if not life > 0:
 		$animator.play("death")

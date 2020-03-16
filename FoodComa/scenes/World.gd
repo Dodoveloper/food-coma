@@ -8,6 +8,7 @@ onready var boss = $Boss
 func _ready():
 	player_hud.initialize(player.lives)
 	boss_hud.initialize(boss.enemy_name, boss.life)
+	boss.initboss(self, player)
 
 func _on_Player_hurt(hitpoints):
 	player_hud.update_lives(hitpoints)

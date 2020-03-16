@@ -46,7 +46,7 @@ enemy_name = "POLPETTE"
 
 [node name="animator" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-frame = 1
+frame = 5
 playing = true
 offset = Vector2( -0.901384, -16.5719 )
 
