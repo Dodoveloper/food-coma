@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/GameOver.gd" type="Script" id=2]
 [ext_resource path="res://assets/UI/cube_cavern/cubecavern_memesbruh03.ttf" type="DynamicFontData" id=3]
-[ext_resource path="res://assets/UI/play.png" type="Texture" id=4]
+[ext_resource path="res://assets/UI/button.png" type="Texture" id=4]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Appear"
@@ -36,14 +36,14 @@ size = 64
 font_data = ExtResource( 3 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 32
+size = 24
 font_data = ExtResource( 3 )
 
 [node name="GAMEOVER" type="ColorRect"]
 pause_mode = 2
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0 )
+color = Color( 0, 0, 0, 0.788235 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -55,8 +55,8 @@ anims/Appear = SubResource( 1 )
 [node name="Control" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = -1000.0
-margin_bottom = -1000.0
+margin_left = 3.38068
+margin_right = 3.38062
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -72,39 +72,54 @@ text = "GAMEOVER"
 align = 1
 valign = 1
 
-[node name="FIRST" type="TextureButton" parent="Control"]
-margin_left = 272.0
-margin_top = 504.0
-margin_right = 396.0
-margin_bottom = 541.0
-texture_normal = ExtResource( 4 )
+[node name="FIRST" type="NinePatchRect" parent="Control"]
+margin_left = 400.0
+margin_top = 500.0
+margin_right = 520.0
+margin_bottom = 530.0
+texture = ExtResource( 4 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Label" type="Label" parent="Control/FIRST"]
+[node name="RETRY" type="Button" parent="Control/FIRST"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "RETRY"
-align = 1
-valign = 1
+flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="SECOND" type="TextureButton" parent="Control"]
-margin_left = 908.611
-margin_top = 510.916
-margin_right = 1008.61
-margin_bottom = 541.916
-texture_normal = ExtResource( 4 )
+[node name="FIRST2" type="NinePatchRect" parent="Control"]
+margin_left = 800.0
+margin_top = 500.0
+margin_right = 920.0
+margin_bottom = 530.0
+texture = ExtResource( 4 )
+patch_margin_left = 8
+patch_margin_top = 8
+patch_margin_right = 8
+patch_margin_bottom = 8
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="Label" type="Label" parent="Control/SECOND"]
+[node name="QUIT" type="Button" parent="Control/FIRST2"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
-text = "quit"
-align = 1
-valign = 1
+text = "QUIT"
+flat = true
 
 [node name="Tween" type="Tween" parent="."]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
-[connection signal="pressed" from="Control/FIRST" to="." method="_on_RETRY_pressed"]
-[connection signal="pressed" from="Control/SECOND" to="." method="_on_QUIT_pressed"]
+[connection signal="pressed" from="Control/FIRST/RETRY" to="." method="_on_RETRY_pressed"]
+[connection signal="pressed" from="Control/FIRST2/QUIT" to="." method="_on_QUIT_pressed"]
