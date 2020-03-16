@@ -92,6 +92,9 @@ custom_fonts/font = SubResource( 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "CREDITS"
 flat = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="FIRST3" type="NinePatchRect" parent="VBoxContainer"]
 margin_top = 168.0
@@ -115,5 +118,5 @@ custom_colors/font_color = Color( 0, 0, 0, 1 )
 text = "QUIT"
 flat = true
 [connection signal="pressed" from="VBoxContainer/FIRST/Play" to="." method="_on_Play_pressed"]
-[connection signal="pressed" from="VBoxContainer/FIRST2/Credits" to="." method="_on_Quit_pressed"]
+[connection signal="pressed" from="VBoxContainer/FIRST2/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="VBoxContainer/FIRST3/Quit" to="." method="_on_Quit_pressed"]
