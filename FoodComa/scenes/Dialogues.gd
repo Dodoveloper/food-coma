@@ -3,10 +3,15 @@ extends Control
 var num_round = 0
 onready var actor = $NinePatchRect/Actor
 onready var text = $NinePatchRect/Text
+onready var cloud = $NinePatchRect
+onready var anim = $AnimationPlayer
 
 func _ready():
 	yield(get_tree().create_timer(1), "timeout")
+	anim.play("ready")
+	yield(anim, "animation_finished")
 	speak()
+	cloud.visible = true
 	
 var dialogues = [
 	[
@@ -32,11 +37,19 @@ var dialogues = [
 ]
 ]
 
+signal skip
+
+func _input(event):
+	if event.is_action_pressed("ui_accept"):
+		emit_signal("skip")
+
 func speak():
 	var this_round = dialogues[num_round]
 	for this_actor in this_round:
+		get_node(this_actor["actor"]).visible = true
 		actor.text = this_actor["actor"]
 		text.text = this_actor["text"]
-		get_node(this_actor["actor"]).scale += Vector2(0.3,0.3)
-		yield(get_tree().create_timer(5), "timeout")
-		get_node(this_actor["actor"]).scale -= Vector2(0.3,0.3)
+		get_node(this_actor["actor"]).scale += Vector2(0.5,0.5)
+		yield(self, "skip")
+		get_node(this_actor["actor"]).scale -= Vector2(0.5,0.5)
+		get_node(this_actor["actor"]).visible = false
