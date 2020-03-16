@@ -56,12 +56,24 @@ func _on_Area2D_area_entered(area):
 			set_physics_process(false)
 			$AnimSprite.play("death")
 			return
-		lives -= area.hitpoints
-		cur_shape += 1 if cur_shape < body_shapes.size() - 1 else 0
-		emit_signal("hurt", lives)
+		take_damage(area.hitpoints)
 		area.destroy()
 	if area is Powerup:
 		emit_signal("collect", area)
+
+func take_damage(amount : int):
+	# decrease life
+	lives -= amount
+	cur_shape += 1 if cur_shape < body_shapes.size() - 1 else 0
+	emit_signal("hurt", lives)
+	# hit animation
+	$Area2D.set_deferred("monitorable", false)
+	$Area2D.set_deferred("monitoring", false)
+	$AnimSprite.modulate.g = 0.0
+	yield(get_tree().create_timer(1.0), "timeout")
+	$Area2D.set_deferred("monitorable", true)
+	$Area2D.set_deferred("monitoring", true)
+	$AnimSprite.modulate.g = 1.0
 
 func _on_FireRate_timeout():
 	is_shooting = false
