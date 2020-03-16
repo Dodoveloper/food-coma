@@ -81,11 +81,11 @@ var BulletSpiralOffset:float
 func BulletSpiralSpawn(sweep:float, threads:int, speed:float) -> Array:
 	var step:float
 	var offset:float
-	var B:Vector2
-	var Result:Array
+	var B:Vector2 = Vector2(0.0, 0.0)
+	var Result:Array = []
 	
 	Result.clear()
-	step = PI / (threads / 2)
+	step = PI / (threads as float / 2.0)
 	offset = PI / threads
 	BulletSpiralOffset += sweep
 	for i in range(threads):
@@ -98,11 +98,11 @@ func BulletSpiralSpawn(sweep:float, threads:int, speed:float) -> Array:
 func BulletThreadsSpawn(threads:int, speed:float) -> Array:
 	var step:float
 	var offset:float
-	var B:Vector2
-	var Result:Array
+	var B:Vector2 = Vector2(0.0, 0.0)
+	var Result:Array = []
 	
 	Result.clear()
-	step = PI / (threads / 2)
+	step = PI / (threads as float / 2.0)
 	offset = PI / threads
 	for i in range(threads):
 		B.x = speed
@@ -113,8 +113,8 @@ func BulletThreadsSpawn(threads:int, speed:float) -> Array:
 func BulletCircleSpawn(count:int, speed:float):
 	var offset:float
 	var PI2:float
-	var B:Vector2
-	var Result:Array
+	var B:Vector2 = Vector2(0.0, 0.0)
+	var Result:Array = []
 	
 	offset = PI / count
 	PI2 = 2 * PI
@@ -126,8 +126,8 @@ func BulletCircleSpawn(count:int, speed:float):
 
 func BulletFollowerSpawn(speed:float):
 	var V:Vector2
-	var B:Vector2
-	var Result:Array
+	var B:Vector2 = Vector2(0.0, 0.0)
+	var Result:Array = []
 	
 	V = PlayerNode.position - ParentNode.position
 	V = V.normalized()
