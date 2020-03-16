@@ -34,9 +34,9 @@ animations = [ {
 "speed": 6.0
 }, {
 "frames": [ ExtResource( 11 ), ExtResource( 15 ), ExtResource( 8 ), ExtResource( 16 ), ExtResource( 14 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 17 ), ExtResource( 18 ) ],
-"loop": true,
+"loop": false,
 "name": "death",
-"speed": 5.0
+"speed": 4.0
 } ]
 
 [sub_resource type="CapsuleShape2D" id=3]
@@ -63,7 +63,6 @@ enemy_name = "MEATBALLS"
 [node name="animator" type="AnimatedSprite" parent="."]
 material = SubResource( 1 )
 frames = SubResource( 2 )
-frame = 1
 playing = true
 offset = Vector2( -0.901384, -16.5719 )
 

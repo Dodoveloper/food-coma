@@ -24,8 +24,8 @@ func hurt(quantity):
 	var M:Material
 	
 	if not life > 0:
+		speed = 0
 		$animator.play("death")
-		emit_signal("dead")
 	else:
 		life -= quantity
 		emit_signal("got_hit", quantity)
@@ -41,8 +41,8 @@ func _physics_process(delta):
 
 func _on_animator_animation_finished():
 	if $animator.animation == "death":
-		emit_signal("dead")
 		# cambia scena
+		emit_signal("dead")
 
 func _on_Area2D_body_entered(body):
 	if body is Player:
