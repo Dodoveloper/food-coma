@@ -22,3 +22,7 @@ func start():
 
 func combat():
 	get_tree().change_scene(menu[course])
+
+func _unhandled_key_input(event:InputEventKey):
+	if event.is_action_pressed("ui_quit"):
+		get_tree().quit()
