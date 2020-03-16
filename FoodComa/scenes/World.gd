@@ -39,4 +39,5 @@ func _on_Boss_dead():
 	get_tree().paused = true
 
 func _on_next_course():
-	get_tree().change_scene_to(next_course)
+	global.next_course()
+	

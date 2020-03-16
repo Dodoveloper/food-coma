@@ -7,6 +7,7 @@ onready var cloud = $NinePatchRect
 onready var anim = $AnimationPlayer
 
 func _ready():
+	num_round = global.course
 	yield(get_tree().create_timer(1), "timeout")
 	anim.play("ready")
 	yield(anim, "animation_finished")
@@ -55,4 +56,4 @@ func speak():
 		get_node(this_actor["actor"]).scale -= Vector2(0.5,0.5)
 		get_node(this_actor["actor"]).visible = false
 	
-	emit_signal("over")
+	global.combat()
