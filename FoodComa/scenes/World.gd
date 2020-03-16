@@ -32,8 +32,6 @@ func _on_Player_dead():
 	gameover.move_player_to_center(player)
 	
 	get_tree().paused = true
-	
-
 
 func _on_Boss_dead():
 	var you_won = you_won_scene.instance()
