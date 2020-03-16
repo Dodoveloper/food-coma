@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://scenes/HUD.gd" type="Script" id=1]
 [ext_resource path="res://scenes/BossLifeBar.tscn" type="PackedScene" id=2]
@@ -10,6 +10,7 @@
 [ext_resource path="res://scenes/GameOver.tscn" type="PackedScene" id=8]
 [ext_resource path="res://scenes/World2.tscn" type="PackedScene" id=9]
 [ext_resource path="res://scenes/YOUWON.tscn" type="PackedScene" id=10]
+[ext_resource path="res://assets/Soundtrack/CarbonaraFlyingMonster_new.ogg" type="AudioStream" id=11]
 
 [node name="World1" type="Node2D"]
 script = ExtResource( 5 )
@@ -27,6 +28,7 @@ centered = false
 position = Vector2( 608.207, 634.763 )
 
 [node name="Boss" parent="." instance=ExtResource( 7 )]
+life_points = 1
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
@@ -45,6 +47,11 @@ life_scene = ExtResource( 4 )
 
 [node name="LifeBar" parent="CanvasLayer" instance=ExtResource( 2 )]
 position = Vector2( 459.509, 11.7691 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+volume_db = -20.0
+autoplay = true
 [connection signal="dead" from="Player" to="." method="_on_Player_dead"]
 [connection signal="hurt" from="Player" to="." method="_on_Player_hurt"]
 [connection signal="dead" from="Boss" to="." method="_on_Boss_dead"]

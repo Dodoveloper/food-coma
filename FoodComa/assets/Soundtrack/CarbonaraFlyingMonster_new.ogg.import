@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/CarbonaraFlyingMonster_new.ogg-f6d270f6cc5a5dab52e5f566be1e5598.oggstr"
+
+[deps]
+
+source_file="res://assets/Soundtrack/CarbonaraFlyingMonster_new.ogg"
+dest_files=[ "res://.import/CarbonaraFlyingMonster_new.ogg-f6d270f6cc5a5dab52e5f566be1e5598.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

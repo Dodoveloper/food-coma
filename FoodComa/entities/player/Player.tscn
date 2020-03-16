@@ -85,17 +85,27 @@
 [ext_resource path="res://assets/character/death/death_02.png" type="Texture" id=83]
 [ext_resource path="res://shader/blink.shader" type="Shader" id=84]
 
-[sub_resource type="ShaderMaterial" id=4]
+[sub_resource type="ShaderMaterial" id=1]
 shader = ExtResource( 84 )
 shader_param/enable = false
 shader_param/color = Vector3( 1, 1, 1 )
 
-[sub_resource type="SpriteFrames" id=1]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 40 ), ExtResource( 41 ), ExtResource( 38 ), ExtResource( 39 ) ],
 "loop": true,
 "name": "idle_overweight",
 "speed": 4.0
+}, {
+"frames": [ ExtResource( 82 ), ExtResource( 83 ), ExtResource( 76 ), ExtResource( 75 ), ExtResource( 78 ), ExtResource( 79 ), ExtResource( 80 ), ExtResource( 77 ), ExtResource( 81 ) ],
+"loop": false,
+"name": "death",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 74 ), ExtResource( 61 ), ExtResource( 67 ), ExtResource( 70 ) ],
+"loop": true,
+"name": "idle_obese",
+"speed": 5.0
 }, {
 "frames": [ ExtResource( 23 ), ExtResource( 22 ), ExtResource( 26 ), ExtResource( 32 ) ],
 "loop": true,
@@ -166,22 +176,12 @@ animations = [ {
 "loop": true,
 "name": "run_obese",
 "speed": 5.0
-}, {
-"frames": [ ExtResource( 74 ), ExtResource( 61 ), ExtResource( 67 ), ExtResource( 70 ) ],
-"loop": true,
-"name": "idle_obese",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 82 ), ExtResource( 83 ), ExtResource( 76 ), ExtResource( 75 ), ExtResource( 78 ), ExtResource( 79 ), ExtResource( 80 ), ExtResource( 77 ), ExtResource( 81 ) ],
-"loop": false,
-"name": "death",
-"speed": 6.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=2]
+[sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 2, 2 )
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 11.0025, 36 )
 
 [node name="Player" type="KinematicBody2D"]
@@ -191,10 +191,10 @@ speed = 450
 Bullet = ExtResource( 56 )
 
 [node name="AnimSprite" type="AnimatedSprite" parent="."]
-material = SubResource( 4 )
+material = SubResource( 1 )
 position = Vector2( -1, -2 )
 scale = Vector2( 2, 2 )
-frames = SubResource( 1 )
+frames = SubResource( 2 )
 animation = "idle_thin"
 playing = true
 
@@ -203,7 +203,7 @@ collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 2 )
+shape = SubResource( 3 )
 
 [node name="ShootingPos" type="Position2D" parent="."]
 position = Vector2( 0, -39.7214 )
@@ -212,6 +212,6 @@ position = Vector2( 0, -39.7214 )
 wait_time = 0.1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource( 3 )
+shape = SubResource( 4 )
 [connection signal="area_entered" from="Area2D" to="." method="_on_Area2D_area_entered"]
 [connection signal="timeout" from="FireRate" to="." method="_on_FireRate_timeout"]
