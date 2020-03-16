@@ -3,34 +3,34 @@ extends SpawnerEngine
 
 # ----- Configuration ----------------------------------------------------------
 # Pattern A
-const PATT_A_BULLET_FREQ:float = 2.5
+const PATT_A_BULLET_FREQ:float = 0.5
 const PATT_A_BULLET_THREADS:int = 4
-const PATT_A_BULLET_SPEED:float = 100.0
+const PATT_A_BULLET_SPEED:float = 200.0
 const PATT_A_SWEEP_SPEED:float = 0.2
 
 # Pattern B
-const PATT_B_BULLET_FREQ:float = 2.5
-const PATT_B_BULLET_THREADS:int = 4
-const PATT_B_BULLET_SPEED:float = 100.0
-const PATT_B_SWEEP_SPEED:float = 0.2
+const PATT_B_BULLET_FREQ:float = PATT_A_BULLET_FREQ
+const PATT_B_BULLET_THREADS:int = PATT_A_BULLET_THREADS
+const PATT_B_BULLET_SPEED:float = PATT_A_BULLET_SPEED
+const PATT_B_SWEEP_SPEED:float = PATT_A_SWEEP_SPEED
 
 # Pattern C
-const PATT_C_BULLET_FREQ:float = 2.5
-const PATT_C_BULLET_THREADS:int = 4
-const PATT_C_BULLET_SPEED:float = 100.0
-const PATT_C_SWEEP_SPEED:float = 0.2
+const PATT_C_BULLET_FREQ:float = PATT_A_BULLET_FREQ
+const PATT_C_BULLET_THREADS:int = PATT_A_BULLET_THREADS
+const PATT_C_BULLET_SPEED:float = PATT_A_BULLET_SPEED
+const PATT_C_SWEEP_SPEED:float = PATT_A_SWEEP_SPEED
 
 # Pattern D
-const PATT_D_BULLET_FREQ:float = 2.5
-const PATT_D_BULLET_THREADS:int = 4
-const PATT_D_BULLET_SPEED:float = 100.0
-const PATT_D_SWEEP_SPEED:float = 0.2
+const PATT_D_BULLET_FREQ:float = PATT_A_BULLET_FREQ
+const PATT_D_BULLET_THREADS:int = PATT_A_BULLET_THREADS
+const PATT_D_BULLET_SPEED:float = PATT_A_BULLET_SPEED
+const PATT_D_SWEEP_SPEED:float = PATT_A_SWEEP_SPEED
 
 # Pattern E
-const PATT_E_BULLET_FREQ:float = 2.5
-const PATT_E_BULLET_THREADS:int = 4
-const PATT_E_BULLET_SPEED:float = 100.0
-const PATT_E_SWEEP_SPEED:float = 0.2
+const PATT_E_BULLET_FREQ:float = PATT_A_BULLET_FREQ
+const PATT_E_BULLET_THREADS:int = PATT_A_BULLET_THREADS
+const PATT_E_BULLET_SPEED:float = PATT_A_BULLET_SPEED
+const PATT_E_SWEEP_SPEED:float = PATT_A_SWEEP_SPEED
 
 
 # ----- Variables --------------------------------------------------------------
