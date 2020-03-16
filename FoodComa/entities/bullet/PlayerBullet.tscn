@@ -70,6 +70,7 @@ damage = 2
 [node name="Sprite" type="AnimatedSprite" parent="."]
 frames = SubResource( 8 )
 animation = "running"
+frame = 1
 playing = true
 
 [node name="Collider" type="CollisionShape2D" parent="."]
@@ -77,7 +78,7 @@ z_index = -10
 shape = SubResource( 9 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
-scale = Vector2( 1.58888, 1.58888 )
+scale = Vector2( 2.5568, 2.57472 )
 [connection signal="body_entered" from="." to="." method="_on_PlayerBullet_body_entered"]
 [connection signal="animation_finished" from="Sprite" to="." method="_on_Sprite_animation_finished"]
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
