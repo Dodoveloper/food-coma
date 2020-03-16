@@ -38,6 +38,7 @@ var dialogues = [
 ]
 
 signal skip
+signal over
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
@@ -53,3 +54,5 @@ func speak():
 		yield(self, "skip")
 		get_node(this_actor["actor"]).scale -= Vector2(0.5,0.5)
 		get_node(this_actor["actor"]).visible = false
+	
+	emit_signal("over")
