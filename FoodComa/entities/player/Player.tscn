@@ -1,4 +1,4 @@
-[gd_scene load_steps=78 format=2]
+[gd_scene load_steps=87 format=2]
 
 [ext_resource path="res://entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/character/thin/idle_thin_02.png" type="Texture" id=2]
@@ -74,6 +74,15 @@
 [ext_resource path="res://assets/character/obese/run_obese_03.png" type="Texture" id=72]
 [ext_resource path="res://assets/character/obese/run_obese_throwing_antiacid_04.png" type="Texture" id=73]
 [ext_resource path="res://assets/character/obese/idle_obese_01.png" type="Texture" id=74]
+[ext_resource path="res://assets/character/death/death_04.png" type="Texture" id=75]
+[ext_resource path="res://assets/character/death/death_03.png" type="Texture" id=76]
+[ext_resource path="res://assets/character/death/death_08.png" type="Texture" id=77]
+[ext_resource path="res://assets/character/death/death_05.png" type="Texture" id=78]
+[ext_resource path="res://assets/character/death/death_06.png" type="Texture" id=79]
+[ext_resource path="res://assets/character/death/death_07.png" type="Texture" id=80]
+[ext_resource path="res://assets/character/death/death_09.png" type="Texture" id=81]
+[ext_resource path="res://assets/character/death/death_01.png" type="Texture" id=82]
+[ext_resource path="res://assets/character/death/death_02.png" type="Texture" id=83]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -156,6 +165,11 @@ animations = [ {
 "loop": true,
 "name": "idle_obese",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 82 ), ExtResource( 83 ), ExtResource( 76 ), ExtResource( 75 ), ExtResource( 78 ), ExtResource( 79 ), ExtResource( 80 ), ExtResource( 77 ), ExtResource( 81 ) ],
+"loop": false,
+"name": "death",
+"speed": 6.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
@@ -174,6 +188,7 @@ position = Vector2( -1, -2 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "idle_thin"
+playing = true
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_layer = 0

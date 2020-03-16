@@ -50,9 +50,11 @@ func shoot(start_pos : Vector2):
 	$FireRate.start()
 
 func _on_Area2D_area_entered(area):
-	if area is EnemyBullet:
+	if area.is_in_group("enemy_bullet"):
 		if not lives > 0:
 			emit_signal("dead")
+			set_physics_process(false)
+			$AnimSprite.play("death")
 			return
 		lives -= area.hitpoints
 		cur_shape += 1 if cur_shape < body_shapes.size() - 1 else 0

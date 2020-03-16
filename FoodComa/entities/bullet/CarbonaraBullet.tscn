@@ -21,7 +21,9 @@ animations = [ {
 radius = 4.36878
 height = 0.173244
 
-[node name="EnemyBullet" type="Area2D"]
+[node name="CarbonaraBullet" type="Area2D" groups=[
+"enemy_bullet",
+]]
 collision_layer = 16
 collision_mask = 17
 script = ExtResource( 2 )
