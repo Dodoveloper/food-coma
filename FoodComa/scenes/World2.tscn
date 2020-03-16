@@ -52,6 +52,7 @@ position = Vector2( 459.509, 11.7691 )
 stream = ExtResource( 11 )
 volume_db = -20.0
 autoplay = true
+[connection signal="dead" from="Player" to="." method="_on_Player_dead"]
 [connection signal="hurt" from="Player" to="." method="_on_Player_hurt"]
 [connection signal="dead" from="Boss" to="." method="_on_Boss_dead"]
 [connection signal="got_hit" from="Boss" to="." method="_on_Boss_got_hit"]
