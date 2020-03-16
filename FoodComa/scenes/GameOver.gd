@@ -5,7 +5,7 @@ onready var tween = $Tween
 signal next
 
 func move_player_to_center(player):
-	add_child(player)
+	call_deferred("add_child", player)
 	tween.interpolate_property(player, "position", player.position, Vector2(600, 500), 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
 
 
