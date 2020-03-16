@@ -36,7 +36,7 @@ enemy_name = "CARBONARA"
 
 [node name="animator" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-frame = 3
+frame = 2
 playing = true
 offset = Vector2( -0.901384, -16.5719 )
 
@@ -56,6 +56,6 @@ scale = Vector2( 4, 4 )
 curve = SubResource( 3 )
 
 [node name="PathFollow2D" type="PathFollow2D" parent="Node/Path2D"]
-position = Vector2( 130, 56 )
+position = Vector2( 128, 60 )
 rotation = 3.00607
 rotate = false
