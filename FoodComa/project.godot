@@ -56,7 +56,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="FoodComa"
+config/name="FoodSlayer"
 run/main_scene="res://scenes/MENU.tscn"
 config/icon="res://icon.png"
 
