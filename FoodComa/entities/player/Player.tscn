@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=2]
+[gd_scene load_steps=89 format=2]
 
 [ext_resource path="res://entities/player/Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/character/thin/idle_thin_02.png" type="Texture" id=2]
@@ -83,6 +83,12 @@
 [ext_resource path="res://assets/character/death/death_09.png" type="Texture" id=81]
 [ext_resource path="res://assets/character/death/death_01.png" type="Texture" id=82]
 [ext_resource path="res://assets/character/death/death_02.png" type="Texture" id=83]
+[ext_resource path="res://shader/blink.shader" type="Shader" id=84]
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 84 )
+shader_param/enable = false
+shader_param/color = Vector3( 1, 1, 1 )
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -176,7 +182,7 @@ animations = [ {
 extents = Vector2( 2, 2 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 2, 2 )
+extents = Vector2( 11.0025, 36 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_mask = 6
@@ -185,6 +191,7 @@ speed = 450
 Bullet = ExtResource( 56 )
 
 [node name="AnimSprite" type="AnimatedSprite" parent="."]
+material = SubResource( 4 )
 position = Vector2( -1, -2 )
 scale = Vector2( 2, 2 )
 frames = SubResource( 1 )

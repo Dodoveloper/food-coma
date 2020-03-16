@@ -1,5 +1,8 @@
 extends Control
 
+signal skip
+signal over
+
 var num_round = 0
 onready var actor = $NinePatchRect/Actor
 onready var text = $NinePatchRect/Text
@@ -29,22 +32,17 @@ var dialogues = [
 	"text": "[center][shake rate=10 level=10] YOU CAN EAT IT WITHOUT BREAD[/shake][/center]",
 	"effect": true} 
 	],
-	
 	[ {"actor":"nonna", "text":"Well done, my dear! Come on, take some of this! I made it just for you!"},
 	{"actor":"nipote", "text": "Nonna, I'm full..."},
 	{"actor":"nonna", "text": "What am I supposed to do with it?"},
 	{"actor": "nonna", "text": "[center][shake rate=10 level=10]Throw it away? There you go, before it chills...[/shake][/center]", "effect":true}
-],
-[
+	],
+	[
 	{"actor":"nonna", "text": "Oh sweetie, do you want some dessert?"},
 	{"actor":"nipote", "text": "No, no, NONNA!"},
 	{"actor":"nonna", "text": "R E L E A S E  T H E  K R A P F E N"}
-	
+	]
 ]
-]
-
-signal skip
-signal over
 
 func _input(event):
 	if event.is_action_pressed("ui_accept"):
