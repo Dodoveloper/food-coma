@@ -56,6 +56,8 @@ func SpawnBullets(bullets:Array):
 		bullet.setVelocity(params.x)
 		bullet.setDirection(params.y)
 		RootNode.add_child(bullet)
+		if bullet.has_method("init_meatball_bullet"):
+			bullet.init_meatball_bullet(RootNode, PlayerNode, 4.0)
 
 func _process(delta:float):
 	var currlife:int

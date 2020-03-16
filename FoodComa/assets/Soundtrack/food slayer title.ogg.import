@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/food slayer title.ogg-8e5b96ff93c9c8acb8dc1dfbd1e01a08.oggstr"
+
+[deps]
+
+source_file="res://assets/Soundtrack/food slayer title.ogg"
+dest_files=[ "res://.import/food slayer title.ogg-8e5b96ff93c9c8acb8dc1dfbd1e01a08.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0
