@@ -24,10 +24,9 @@ func _on_Player_fattened(lives):
 func _on_Boss_got_hit(quantity):
 	boss_hud.hurt(quantity)
 
-
 func _on_Player_dead():
 	var gameover = gameover_scene.instance()
-	remove_child(player)
+	call_deferred("remove_child", player)
 	canvas_layer.add_child(gameover)
 	gameover.move_player_to_center(player)
 	
