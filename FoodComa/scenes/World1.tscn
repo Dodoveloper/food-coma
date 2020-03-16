@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/HUD.gd" type="Script" id=1]
 [ext_resource path="res://scenes/BossLifeBar.tscn" type="PackedScene" id=2]
@@ -7,9 +7,15 @@
 [ext_resource path="res://scenes/World.gd" type="Script" id=5]
 [ext_resource path="res://entities/player/Player.tscn" type="PackedScene" id=6]
 [ext_resource path="res://entities/enemy/Carbonara.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/GameOver.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/World2.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/YOUWON.tscn" type="PackedScene" id=10]
 
 [node name="World1" type="Node2D"]
 script = ExtResource( 5 )
+gameover_scene = ExtResource( 8 )
+you_won_scene = ExtResource( 10 )
+next_course = ExtResource( 9 )
 
 [node name="Background" type="Sprite" parent="."]
 position = Vector2( 0, -40 )
@@ -39,5 +45,7 @@ life_scene = ExtResource( 4 )
 
 [node name="LifeBar" parent="CanvasLayer" instance=ExtResource( 2 )]
 position = Vector2( 459.509, 11.7691 )
+[connection signal="dead" from="Player" to="." method="_on_Player_dead"]
 [connection signal="hurt" from="Player" to="." method="_on_Player_hurt"]
+[connection signal="dead" from="Boss" to="." method="_on_Boss_dead"]
 [connection signal="got_hit" from="Boss" to="." method="_on_Boss_got_hit"]
