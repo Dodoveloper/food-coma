@@ -63,6 +63,7 @@ enemy_name = "MEATBALLS"
 [node name="animator" type="AnimatedSprite" parent="."]
 material = SubResource( 1 )
 frames = SubResource( 2 )
+frame = 5
 playing = true
 offset = Vector2( -0.901384, -16.5719 )
 
