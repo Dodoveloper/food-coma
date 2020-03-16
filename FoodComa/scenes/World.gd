@@ -40,4 +40,3 @@ func _on_Boss_dead():
 
 func _on_next_course():
 	global.next_course()
-
