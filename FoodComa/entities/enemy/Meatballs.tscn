@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://entities/enemy/Boss.gd" type="Script" id=1]
 [ext_resource path="res://assets/level2/Meatballs/meatball_04.png" type="Texture" id=2]
@@ -19,6 +19,12 @@
 [ext_resource path="res://assets/level2/Meatballs/death/meatball_death_08.png" type="Texture" id=17]
 [ext_resource path="res://assets/level2/Meatballs/death/meatball_death_09.png" type="Texture" id=18]
 [ext_resource path="res://entities/bullet/MeatballsBullet.tscn" type="PackedScene" id=19]
+[ext_resource path="res://shader/blink.shader" type="Shader" id=20]
+
+[sub_resource type="ShaderMaterial" id=4]
+shader = ExtResource( 20 )
+shader_param/enable = false
+shader_param/color = Vector3( 1, 1, 1 )
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -51,6 +57,7 @@ script = ExtResource( 1 )
 enemy_name = "MEATBALLS"
 
 [node name="animator" type="AnimatedSprite" parent="."]
+material = SubResource( 4 )
 frames = SubResource( 1 )
 frame = 1
 playing = true
