@@ -3,8 +3,9 @@ class_name MeatballsBullet
 
 var velocity : float
 var direction : float
+var hitpoints : int = 1
 export var life_points: int = 20
-onready var life = life_points
+onready var life:int = life_points
 
 func init_meatball_bullet(root:Node, player:Node, bullet_scale:float):
 	$SpawnerBullet.initspawner(root, player, bullet_scale)
