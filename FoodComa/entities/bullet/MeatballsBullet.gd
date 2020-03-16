@@ -1,18 +1,25 @@
 extends Area2D
 class_name MeatballsBullet
 
-export var speed : int
-export var hitpoints : int = 1
-
-var velocity : Vector2
-
-func start(_position, _direction, _angle):
-	global_position = _position
-	rotation = _direction.angle() + _angle
-	velocity = Vector2.RIGHT.rotated(rotation) * speed
+var velocity : float
+var direction : float
+var hitpoints : int = 1
 
 func _physics_process(delta):
-	position += velocity * delta
+	var movement : Vector2
+	movement = polar2cartesian(velocity, direction)
+	position += movement * delta
+
+func setVelocity(Velocity : float):
+	velocity = Velocity
+
+func setDirection(Direction : float):
+	direction = Direction
+	while direction < 0.0:
+		direction += 2*PI
+
+func setPosition(Pos : Vector2):
+	position = Pos
 
 func _on_VisibilityNotifier2D_screen_exited():
 	queue_free()

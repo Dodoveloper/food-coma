@@ -39,5 +39,6 @@ life_scene = ExtResource( 4 )
 
 [node name="LifeBar" parent="CanvasLayer" instance=ExtResource( 2 )]
 position = Vector2( 459.509, 11.7691 )
+[connection signal="dead" from="Player" to="." method="_on_Player_dead"]
 [connection signal="hurt" from="Player" to="." method="_on_Player_hurt"]
 [connection signal="got_hit" from="Boss" to="." method="_on_Boss_got_hit"]
