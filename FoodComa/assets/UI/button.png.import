@@ -2,33 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-<<<<<<< HEAD
 path="res://.import/button.png-7e28954d923c594013e1393853593bcf.stex"
-=======
-<<<<<<< HEAD:FoodComa/assets/winner.png.import
-path="res://.import/winner.png-d0d3cb91053de13ed3c5ff99e4b4ba13.stex"
-=======
-path="res://.import/button.png-7e28954d923c594013e1393853593bcf.stex"
->>>>>>> origin/master:FoodComa/assets/UI/button.png.import
->>>>>>> origin/master
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-<<<<<<< HEAD
 source_file="res://assets/UI/button.png"
 dest_files=[ "res://.import/button.png-7e28954d923c594013e1393853593bcf.stex" ]
-=======
-<<<<<<< HEAD:FoodComa/assets/winner.png.import
-source_file="res://assets/winner.png"
-dest_files=[ "res://.import/winner.png-d0d3cb91053de13ed3c5ff99e4b4ba13.stex" ]
-=======
-source_file="res://assets/UI/button.png"
-dest_files=[ "res://.import/button.png-7e28954d923c594013e1393853593bcf.stex" ]
->>>>>>> origin/master:FoodComa/assets/UI/button.png.import
->>>>>>> origin/master
 
 [params]
 
