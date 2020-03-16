@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/UI/cube_cavern/cubecavern_memesbruh03.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/UI/button.png" type="Texture" id=2]
 [ext_resource path="res://assets/UI/food_slayer.png" type="Texture" id=3]
 [ext_resource path="res://assets/Dialogues/kitchen.png" type="Texture" id=4]
 [ext_resource path="res://scenes/MENU.gd" type="Script" id=5]
+[ext_resource path="res://assets/Soundtrack/food slayer title.ogg" type="AudioStream" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 32
@@ -120,6 +121,10 @@ flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 6 )
+autoplay = true
 [connection signal="pressed" from="VBoxContainer/FIRST/Play" to="." method="_on_Play_pressed"]
 [connection signal="pressed" from="VBoxContainer/FIRST2/Credits" to="." method="_on_Credits_pressed"]
 [connection signal="pressed" from="VBoxContainer/FIRST3/Quit" to="." method="_on_Quit_pressed"]
