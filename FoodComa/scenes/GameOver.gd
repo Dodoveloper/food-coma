@@ -32,3 +32,5 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 func _on_NEXT_pressed():
 	get_tree().paused = false
 	emit_signal("next")
+
+
