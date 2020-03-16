@@ -1,4 +1,5 @@
 extends KinematicBody2D
+class_name Player
 
 signal hurt
 signal dead
@@ -18,8 +19,13 @@ var cur_shape : int = 0
 var is_shooting : bool = false
 var screen : Rect2
 
+onready var sprite_material = $AnimSprite.material
+
 func _ready():
 	screen = get_viewport_rect()
+	if sprite_material:
+		sprite_material.set_shader_param("enable", false);
+		sprite_material.set_shader_param("color", Vector3(0.5, 1.0, 1.0));
 
 func _physics_process(_delta):
 	direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
@@ -51,17 +57,17 @@ func shoot(start_pos : Vector2):
 
 func _on_Area2D_area_entered(area):
 	if area.is_in_group("enemy_bullet"):
-		if not lives > 0:
-			emit_signal("dead")
-			set_physics_process(false)
-			$AnimSprite.play("death")
-			return
-		take_damage(area.hitpoints)
+		check_damage(area.hitpoints)
 		area.destroy()
 	if area is Powerup:
 		emit_signal("collect", area)
 
-func take_damage(amount : int):
+func check_damage(amount : int):
+	if not lives > 0:
+		emit_signal("dead")
+		set_physics_process(false)
+		$AnimSprite.play("death")
+		return
 	# decrease life
 	lives -= amount
 	cur_shape += 1 if cur_shape < body_shapes.size() - 1 else 0
@@ -69,11 +75,13 @@ func take_damage(amount : int):
 	# hit animation
 	$Area2D.set_deferred("monitorable", false)
 	$Area2D.set_deferred("monitoring", false)
-	$AnimSprite.modulate.g = 0.0
+	if sprite_material:
+		sprite_material.set_shader_param("enable", true);
+		yield(get_tree().create_timer(0.033), "timeout")
+		sprite_material.set_shader_param("enable", false);
 	yield(get_tree().create_timer(1.0), "timeout")
 	$Area2D.set_deferred("monitorable", true)
 	$Area2D.set_deferred("monitoring", true)
-	$AnimSprite.modulate.g = 1.0
 
 func _on_FireRate_timeout():
 	is_shooting = false

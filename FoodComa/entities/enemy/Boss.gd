@@ -43,3 +43,7 @@ func _on_animator_animation_finished():
 	if $animator.animation == "death":
 		emit_signal("dead")
 		# cambia scena
+
+func _on_Area2D_body_entered(body):
+	if body is Player:
+		body.check_damage(1)

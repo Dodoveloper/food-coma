@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://entities/enemy/Boss.gd" type="Script" id=1]
 [ext_resource path="res://assets/level2/Meatballs/meatball_04.png" type="Texture" id=2]
@@ -48,6 +48,10 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 128, 60, 0, 0, 0, 0, 84, 64, 0.306933, -6.4456, -0.306933, 6.4456, 64, 76, 0, 0, 0, 0, 84, 88, 0, 0, 0, 0, 128, 92, 0, 0, 0, 0, 192, 92, -7.67334, 1.53467, 7.67334, -1.53467, 236, 88, 1.22773, 6.4456, -1.22773, -6.4456, 256, 76, 0, 0, 0, 0, 236, 64, 0, 0, 0, 0, 192, 60, 0, 0, 0, 0, 128, 60 )
 }
 
+[sub_resource type="CapsuleShape2D" id=5]
+radius = 16.2759
+height = 46.8443
+
 [node name="Meatballs" type="KinematicBody2D" groups=[
 "boss",
 ]]
@@ -59,6 +63,7 @@ enemy_name = "MEATBALLS"
 [node name="animator" type="AnimatedSprite" parent="."]
 material = SubResource( 1 )
 frames = SubResource( 2 )
+frame = 1
 playing = true
 offset = Vector2( -0.901384, -16.5719 )
 
@@ -83,4 +88,14 @@ curve = SubResource( 4 )
 position = Vector2( 128, 60 )
 rotation = 3.00607
 rotate = false
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2( 0.32309, 10.3388 )
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+visible = false
+rotation = 1.5708
+shape = SubResource( 5 )
 [connection signal="animation_finished" from="animator" to="." method="_on_animator_animation_finished"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_Area2D_body_entered"]
