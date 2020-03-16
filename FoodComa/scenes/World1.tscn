@@ -28,7 +28,6 @@ centered = false
 position = Vector2( 608.207, 634.763 )
 
 [node name="Boss" parent="." instance=ExtResource( 7 )]
-life_points = 4
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
