@@ -55,6 +55,8 @@ func SpawnBullets(bullets:Array):
 		bullet.global_position = ParentNode.global_position
 		bullet.setVelocity(params.x)
 		bullet.setDirection(params.y)
+		if bullet.has_method("init_meatball_bullet"):
+			bullet.init_meatball_bullet(RootNode, PlayerNode, 4.0)
 		RootNode.add_child(bullet)
 
 func _process(delta:float):
