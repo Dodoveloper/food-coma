@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/GameOver.gd" type="Script" id=1]
-[ext_resource path="res://assets/MonsterFriendFore.otf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/UI/cube_cavern/cubecavern_memesbruh03.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://assets/UI/play.png" type="Texture" id=3]
 
 [sub_resource type="Animation" id=1]
 resource_name = "Appear"
@@ -31,11 +32,11 @@ tracks/1/keys = {
 }
 
 [sub_resource type="DynamicFont" id=2]
-size = 32
+size = 64
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 24
+size = 32
 font_data = ExtResource( 2 )
 
 [node name="YOUWON" type="ColorRect"]
@@ -70,30 +71,45 @@ custom_fonts/font = SubResource( 2 )
 text = "YOU WON"
 align = 1
 valign = 1
-
-[node name="FIRST" type="Button" parent="Control"]
-margin_left = 272.0
-margin_top = 504.0
-margin_right = 410.0
-margin_bottom = 535.0
-custom_fonts/font = SubResource( 3 )
-text = "NEXT COURSE"
-flat = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SECOND" type="Button" parent="Control"]
+[node name="FIRST" type="TextureButton" parent="Control"]
+margin_left = 272.0
+margin_top = 504.0
+margin_right = 478.0
+margin_bottom = 567.0
+texture_normal = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Control/FIRST"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "next course"
+align = 1
+valign = 1
+
+[node name="SECOND" type="TextureButton" parent="Control"]
 margin_left = 908.0
 margin_top = 510.0
 margin_right = 1173.0
-margin_bottom = 541.0
+margin_bottom = 590.0
+texture_normal = ExtResource( 3 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Control/SECOND"]
+anchor_right = 1.0
+anchor_bottom = 1.0
 custom_fonts/font = SubResource( 3 )
-text = "RETRY"
-flat = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+text = "retry"
+align = 1
+valign = 1
 
 [node name="Tween" type="Tween" parent="."]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
