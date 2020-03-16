@@ -16,10 +16,12 @@ func _ready():
 
 
 func _on_RETRY_pressed():
+	get_tree().paused = false
 	get_tree().reload_current_scene()
 
 
 func _on_QUIT_pressed():
+	get_tree().paused = false
 	get_tree().quit()
 
 
@@ -28,4 +30,5 @@ func _on_AnimationPlayer_animation_finished(anim_name):
 
 
 func _on_NEXT_pressed():
+	get_tree().paused = false
 	emit_signal("next")
