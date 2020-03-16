@@ -15,6 +15,6 @@ func next_course():
 
 func start():
 	get_tree().change_scene(meetup)
-	
+
 func combat():
 	get_tree().change_scene(menu[course])
