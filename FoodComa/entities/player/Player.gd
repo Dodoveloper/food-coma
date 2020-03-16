@@ -25,7 +25,7 @@ func _ready():
 	screen = get_viewport_rect()
 	if sprite_material:
 		sprite_material.set_shader_param("enable", false);
-		sprite_material.set_shader_param("color", Vector3(0.5, 1.0, 1.0));
+		sprite_material.set_shader_param("color", Vector3(1.0, 0.1, 0.1));
 
 func _physics_process(_delta):
 	direction.x = Input.get_action_strength("ui_right") - Input.get_action_strength("ui_left")
