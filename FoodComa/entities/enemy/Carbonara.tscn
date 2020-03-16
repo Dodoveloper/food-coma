@@ -6,7 +6,7 @@
 [ext_resource path="res://assets/level1/CarbonaraFlyingMonster/carbonaraFlyingMonster_02.png" type="Texture" id=4]
 [ext_resource path="res://assets/level1/CarbonaraFlyingMonster/carbonaraFlyingMonster_01.png" type="Texture" id=5]
 [ext_resource path="res://entities/spawner/spawnerBullet.tscn" type="PackedScene" id=9]
-[ext_resource path="res://entities/bullet/EnemyBullet.tscn" type="PackedScene" id=10]
+[ext_resource path="res://entities/bullet/CarbonaraBullet.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/level1/CarbonaraFlyingMonster/carbonaraFlyingMonster_05.png" type="Texture" id=11]
 
 [sub_resource type="SpriteFrames" id=1]
@@ -21,12 +21,13 @@ animations = [ {
 radius = 14.0
 height = 48.8302
 
-[node name="Boss" type="KinematicBody2D" groups=[
+[node name="Carbonara" type="KinematicBody2D" groups=[
 "boss",
 ]]
 scale = Vector2( 4, 4 )
 collision_layer = 2
 script = ExtResource( 1 )
+enemy_name = "CARBONARA"
 
 [node name="animator" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )

@@ -12,7 +12,7 @@ _global_script_classes=[ {
 "base": "Area2D",
 "class": "EnemyBullet",
 "language": "GDScript",
-"path": "res://entities/bullet/EnemyBullet.gd"
+"path": "res://entities/bullet/CarbonaraBullet.gd"
 }, {
 "base": "Area2D",
 "class": "PlayerBullet",
@@ -39,7 +39,7 @@ _global_script_class_icons={
 [application]
 
 config/name="FoodComa"
-run/main_scene="res://scenes/World.tscn"
+run/main_scene="res://scenes/World1.tscn"
 config/icon="res://icon.png"
 
 [display]
