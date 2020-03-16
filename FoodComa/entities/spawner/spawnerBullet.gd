@@ -3,19 +3,13 @@ class_name SpawnerEngine
 
 export (PackedScene) var Bullet
 
-#var spawnerTimer : float = 1500
-#var velocityBullet : int = 200
-#var path : float
-#var counter = 0
-# onready var diagonalTexture = preload("res://assets/level1/CarbonaraBullets/guanciale_diagonal.png")
-# onready var normalTexture = preload("res://assets/level1/CarbonaraBullets/guanciale_vertical.png")
+
 var RootNode:Node
 var ParentNode:Node
 var PlayerNode:Node
 var MaxLife:int
 var BulletScale:float
 
-#var numberBullet = 10
 
 func _ready():
 	RootNode = null
@@ -23,7 +17,6 @@ func _ready():
 	PlayerNode = null
 	MaxLife = 0
 	BulletScale = 1.0
-#	randomize()
 
 func initspawner(root:Node, player:Node, bullet_scale:float):
 	assert(null != root)
@@ -83,42 +76,62 @@ func _process(delta:float):
 	return
 
 
-#	counter += 1
-#	if counter > spawnerTimer*delta:
-#		counter = 0
-#		if get_parent().life == 5:
-#			numberBullet = choose([1,5])
-#			path = choose([0.5*PI,PI]) * deltaTime
-#		elif get_parent().life == 4:
-#			numberBullet = choose([5,10])
-#			path = choose([PI,2*PI]) * deltaTime
-#		elif get_parent().life == 3:
-#			numberBullet = choose([10,20])
-#			path = choose([2*PI,4*PI]) * deltaTime
-#		elif get_parent().life == 2:
-#			numberBullet = choose([15,30])
-#			path = choose([4*PI,6*PI]) * deltaTime
-#		elif get_parent().life == 1:
-#			numberBullet = choose([5,10,30])
-#			velocityBullet = choose([400,200])
-#			spawnerTimer = choose([1500,3000])
-##		path = choose([PI,2*PI,3*PI,5*PI,6*PI,7*PI,8*PI]) * deltaTime
-#		pattern()
-#list of possible pattern
-# (i*PI) +i
-# (2 * i * PI) + i
+var BulletSpiralOffset:float
+
+func BulletSpiralSpawn(sweep:float, threads:int, speed:float) -> Array:
+	var step:float
+	var offset:float
+	var B:Vector2
+	var Result:Array
+	
+	Result.clear()
+	step = PI / (threads / 2)
+	offset = PI / threads
+	BulletSpiralOffset += sweep
+	for i in range(threads):
+		B.x = speed
+		B.y = (i * step) + offset + BulletSpiralOffset
+		Result.append(B)
+	return Result
 
 
+func BulletThreadsSpawn(threads:int, speed:float) -> Array:
+	var step:float
+	var offset:float
+	var B:Vector2
+	var Result:Array
+	
+	Result.clear()
+	step = PI / (threads / 2)
+	offset = PI / threads
+	for i in range(threads):
+		B.x = speed
+		B.y = (i * step) + offset
+		Result.append(B)
+	return Result
 
-#func choose(array):
-#	array.shuffle()
-#	return array.front()
+func BulletCircleSpawn(count:int, speed:float):
+	var offset:float
+	var PI2:float
+	var B:Vector2
+	var Result:Array
+	
+	offset = PI / count
+	PI2 = 2 * PI
+	for i in range(count):
+		B.x = speed
+		B.y = ((i * PI2) / count) + offset
+		Result.append(B)
+	return Result
 
-#func pattern():
-#	for i in range(numberBullet):
-#		var bullet = Bullet.instance()
-#		bullet.scale = Vector2(4, 4)
-#		bullet.global_position = get_parent().global_position
-#		bullet.setVelocity(velocityBullet)
-#		bullet.setDirection(path +i)
-#		get_parent().get_parent().add_child(bullet)
+func BulletFollowerSpawn(speed:float):
+	var V:Vector2
+	var B:Vector2
+	var Result:Array
+	
+	V = PlayerNode.position - ParentNode.position
+	V = V.normalized()
+	B.x = speed
+	B.y = cartesian2polar(V.x, V.y).y
+	Result.append(B)
+	return Result
