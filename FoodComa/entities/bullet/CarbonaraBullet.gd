@@ -1,5 +1,5 @@
 extends Area2D
-class_name EnemyBullet
+class_name CarbonaraBullet
 
 const HEXTANT_SIZE : float = 0.39269908169872415480783042290994
 var velocity : float
