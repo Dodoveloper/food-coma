@@ -23,11 +23,17 @@ _global_script_classes=[ {
 "class": "Powerup",
 "language": "GDScript",
 "path": "res://entities/Powerup.gd"
+}, {
+"base": "Node2D",
+"class": "SpawnerEngine",
+"language": "GDScript",
+"path": "res://entities/spawner/spawnerBullet.gd"
 } ]
 _global_script_class_icons={
 "EnemyBullet": "",
 "PlayerBullet": "",
-"Powerup": ""
+"Powerup": "",
+"SpawnerEngine": ""
 }
 
 [application]
