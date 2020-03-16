@@ -3,6 +3,7 @@ extends Control
 var num_round = 0
 onready var actor = $NinePatchRect/Actor
 onready var text = $NinePatchRect/Text
+onready var effect_text = $NinePatchRect/BBCODE
 onready var cloud = $NinePatchRect
 onready var anim = $AnimationPlayer
 
@@ -23,12 +24,16 @@ var dialogues = [
 	{"actor":"nonna",
 	"text": "What do you mean? You look so wasted..."},
 	{"actor":"nonna",
-	"text": "Come on, you can eat it without bread!"} 
+	"text": "Come on..."},
+	{"actor":"nonna",
+	"text": "[center][shake rate=10 level=10] YOU CAN EAT IT WITHOUT BREAD[/shake][/center]",
+	"effect": true} 
 	],
 	
 	[ {"actor":"nonna", "text":"Well done, my dear! Come on, take some of this! I made it just for you!"},
 	{"actor":"nipote", "text": "Nonna, I'm full..."},
-	{"actor":"nonna", "text": "What am I supposed to do with it? Throw it away? There you go, before it chills..."}
+	{"actor":"nonna", "text": "What am I supposed to do with it?"},
+	{"actor": "nonna", "text": "[center][shake rate=10 level=10]Throw it away? There you go, before it chills...[/shake][/center]", "effect":true}
 ],
 [
 	{"actor":"nonna", "text": "Oh sweetie, do you want some dessert?"},
@@ -50,7 +55,14 @@ func speak():
 	for this_actor in this_round:
 		get_node(this_actor["actor"]).visible = true
 		actor.text = this_actor["actor"]
-		text.text = this_actor["text"]
+		
+		if "effect" in this_actor:
+			effect_text.bbcode_enabled = true
+			effect_text.bbcode_text = this_actor["text"]
+			text.text = ""
+		else:
+			text.text = this_actor["text"]
+			
 		get_node(this_actor["actor"]).scale += Vector2(0.5,0.5)
 		yield(self, "skip")
 		get_node(this_actor["actor"]).scale -= Vector2(0.5,0.5)
