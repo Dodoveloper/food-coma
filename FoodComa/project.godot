@@ -51,8 +51,12 @@ _global_script_class_icons={
 [application]
 
 config/name="FoodComa"
-run/main_scene="res://scenes/World1.tscn"
+run/main_scene="res://scenes/Dialogues.tscn"
 config/icon="res://icon.png"
+
+[autoload]
+
+global="*res://globals/global.gd"
 
 [display]
 

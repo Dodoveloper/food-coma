@@ -39,6 +39,5 @@ func _on_Boss_dead():
 	get_tree().paused = true
 
 func _on_next_course():
-	var E:int
-	E = get_tree().change_scene_to(next_course)
-	assert(OK == E)
+	global.next_course()
+
