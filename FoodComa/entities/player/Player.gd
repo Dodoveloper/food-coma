@@ -1,7 +1,6 @@
 extends KinematicBody2D
 
 signal hurt
-signal fattened
 signal dead
 signal collect
 
@@ -10,21 +9,16 @@ export var lives : int = 3
 export var accuracy : float = 0.1
 export var Bullet : PackedScene
 
-var max_lives : int
-
 var direction : Vector2 = Vector2()
 var velocity : Vector2 = Vector2()
 
 var cur_state : String = "idle"
 var body_shapes = ["thin", "medium", "overweight", "obese"]
-var collision_sizes = [10.6, 12.8, 15.0, 18.1]
 var cur_shape : int = 0
 var is_shooting : bool = false
 var screen : Rect2
 
 func _ready():
-	set_animation(cur_state, is_shooting, body_shapes[cur_shape])
-	max_lives = lives
 	screen = get_viewport_rect()
 
 func _physics_process(_delta):
@@ -46,15 +40,6 @@ func set_animation(state : String, shooting : bool, body_shape : String):
 	var new_anim = "%s_%s%s" % [state, "throw_antiacid_" if shooting else "", body_shape]
 	$AnimSprite.play(new_anim)
 
-func get_fatter():
-	cur_shape += 1 if cur_shape < body_shapes.size() - 1 else 0
-	if cur_shape >= body_shapes.size():
-		emit_signal("dead")
-		return
-	lives = max_lives
-#	$Area2D/CollisionShape2D.shape.extents.x = collision_sizes[cur_shape]
-	emit_signal("fattened", lives)
-
 func shoot(start_pos : Vector2):
 	is_shooting = true
 	var bullet_dir = Vector2.UP.normalized()
@@ -66,10 +51,12 @@ func shoot(start_pos : Vector2):
 
 func _on_Area2D_area_entered(area):
 	if area is EnemyBullet:
-		lives -= area.hitpoints
-		emit_signal("hurt", lives)
 		if not lives > 0:
-			get_fatter()
+			emit_signal("dead")
+			return
+		lives -= area.hitpoints
+		cur_shape += 1 if cur_shape < body_shapes.size() - 1 else 0
+		emit_signal("hurt", lives)
 		area.destroy()
 	if area is Powerup:
 		emit_signal("collect", area)
