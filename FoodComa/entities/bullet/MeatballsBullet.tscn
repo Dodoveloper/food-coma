@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/level2/Meatball_bullets/meatball_bullet.png" type="Texture" id=1]
 [ext_resource path="res://entities/bullet/MeatballsBullet.gd" type="Script" id=2]
+[ext_resource path="res://entities/spawner/spawnerBullet.tscn" type="PackedScene" id=3]
+[ext_resource path="res://entities/bullet/SauceSpawner.gd" type="Script" id=4]
+[ext_resource path="res://entities/bullet/MeatballsSauce.tscn" type="PackedScene" id=5]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 6.06461
@@ -20,4 +23,8 @@ shape = SubResource( 1 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
 scale = Vector2( 3.52946, 3.34389 )
+
+[node name="SpawnerBullet" parent="." instance=ExtResource( 3 )]
+script = ExtResource( 4 )
+Bullet = ExtResource( 5 )
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]
