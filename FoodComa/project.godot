@@ -10,9 +10,14 @@ config_version=4
 
 _global_script_classes=[ {
 "base": "Area2D",
-"class": "EnemyBullet",
+"class": "CarbonaraBullet",
 "language": "GDScript",
 "path": "res://entities/bullet/CarbonaraBullet.gd"
+}, {
+"base": "Area2D",
+"class": "MeatballsBullet",
+"language": "GDScript",
+"path": "res://entities/bullet/MeatballsBullet.gd"
 }, {
 "base": "Area2D",
 "class": "PlayerBullet",
@@ -30,7 +35,8 @@ _global_script_classes=[ {
 "path": "res://entities/spawner/spawnerBullet.gd"
 } ]
 _global_script_class_icons={
-"EnemyBullet": "",
+"CarbonaraBullet": "",
+"MeatballsBullet": "",
 "PlayerBullet": "",
 "Powerup": "",
 "SpawnerEngine": ""

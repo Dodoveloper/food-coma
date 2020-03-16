@@ -1,6 +1,6 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=2]
 
-[ext_resource path="res://entities/enemy/enemy.gd" type="Script" id=1]
+[ext_resource path="res://entities/enemy/Boss.gd" type="Script" id=1]
 [ext_resource path="res://assets/level1/CarbonaraFlyingMonster/carbonaraFlyingMonster_03.png" type="Texture" id=2]
 [ext_resource path="res://assets/level1/CarbonaraFlyingMonster/carbonaraFlyingMonster_04.png" type="Texture" id=3]
 [ext_resource path="res://assets/level1/CarbonaraFlyingMonster/carbonaraFlyingMonster_02.png" type="Texture" id=4]
@@ -21,6 +21,11 @@ animations = [ {
 radius = 14.0
 height = 48.8302
 
+[sub_resource type="Curve2D" id=3]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 128, 60, 0, 0, 0, 0, 84, 64, 0.306933, -6.4456, -0.306933, 6.4456, 64, 76, 0, 0, 0, 0, 84, 88, 0, 0, 0, 0, 128, 92, 0, 0, 0, 0, 192, 92, -7.67334, 1.53467, 7.67334, -1.53467, 236, 88, 1.22773, 6.4456, -1.22773, -6.4456, 256, 76, 0, 0, 0, 0, 236, 64, 0, 0, 0, 0, 192, 60, 0, 0, 0, 0, 128, 60 )
+}
+
 [node name="Carbonara" type="KinematicBody2D" groups=[
 "boss",
 ]]
@@ -31,6 +36,7 @@ enemy_name = "CARBONARA"
 
 [node name="animator" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
+frame = 3
 playing = true
 offset = Vector2( -0.901384, -16.5719 )
 
@@ -39,5 +45,17 @@ rotation = 1.5708
 z_index = -10
 shape = SubResource( 2 )
 
-[node name="CarbonaraSpawner" parent="." instance=ExtResource( 6 )]
+[node name="SpawnerBullet" parent="." instance=ExtResource( 6 )]
 Bullet = ExtResource( 10 )
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Path2D" type="Path2D" parent="Node"]
+position = Vector2( 0, -48 )
+scale = Vector2( 4, 4 )
+curve = SubResource( 3 )
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Node/Path2D"]
+position = Vector2( 130, 56 )
+rotation = 3.00607
+rotate = false
